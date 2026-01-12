@@ -48,28 +48,18 @@ By completing this lab, I demonstrated the ability to:
 
 ```
 
-```mermaid
-%% AWS VPC Lab – Colorful Visualization
 graph TB
-    classDef internet fill:#fef9c3,stroke:#f59e0b,stroke-width:2px;
-    classDef vpc fill:#dbeafe,stroke:#3b82f6,stroke-width:2px,stroke-dasharray:5 5;
-    classDef public fill:#d1fae5,stroke:#10b981,stroke-width:2px;
-    classDef private fill:#fee2e2,stroke:#ef4444,stroke-width:2px;
-    classDef resource fill:#f0f9ff,stroke:#3b82f6,stroke-width:2px;
-
-    Internet[🌐 Internet]:::internet
-
-    subgraph "VPC: lab-vpc (10.0.0.0/16)":::vpc
-        IGW[📡 Internet Gateway]:::resource
+    subgraph "VPC: lab-vpc (10.0.0.0/16)"
+        IGW[Internet Gateway]
         
-        subgraph "Public Subnet (10.0.25.0/24)":::public
-            NAT[NAT Gateway]:::resource
-            RouteTablePublic[Route Table]:::resource
+        subgraph "Public Subnet (10.0.25.0/24)"
+            NAT[NAT Gateway]
+            RouteTablePublic[Route Table]
         end
         
-        subgraph "Private Subnet (10.0.50.0/24)":::private
-            AppServer[Application Instance]:::resource
-            RouteTablePrivate[Route Table]:::resource
+        subgraph "Private Subnet (10.0.50.0/24)"
+            AppServer[Application Instance]
+            RouteTablePrivate[Route Table]
         end
         
         IGW --> RouteTablePublic
@@ -78,8 +68,8 @@ graph TB
         RouteTablePrivate --> NAT
         AppServer --> RouteTablePrivate
     end
-
-    Internet --> IGW
+    
+    Internet[Internet] --> IGW
 
 
 ```
